@@ -9,6 +9,6 @@ const conObj = {
   port: process.env.DB_PORT,
 };
 
-const pool = new Pool(conObj || process.env.DATABASE_URL);
+const pool = new Pool(process.env.DATABASE_URL || conObj);
 
 module.exports = pool;
