@@ -1,7 +1,6 @@
 var { Pool } = require("pg");
 require("dotenv").config();
 
-const isProduction = process.env.NODE_ENV === "production";
 const conObj = {
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
@@ -10,9 +9,6 @@ const conObj = {
   port: process.env.DB_PORT,
 };
 
-const pool = new Pool({
-  conObj: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: isProduction,
-});
+const pool = new Pool(conObj || process.env.DATABASE_URL);
 
 module.exports = pool;
