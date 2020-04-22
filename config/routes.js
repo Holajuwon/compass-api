@@ -5,6 +5,7 @@ const triangle = require("../routes/triangle");
 const cors = require("cors");
 const helmet = require("helmet");
 const compression = require("compression");
+const error = require("../middlewares/error");
 
 module.exports = (app) => {
   app.use(cors());
@@ -15,4 +16,5 @@ module.exports = (app) => {
   app.use("/api/post", post);
   app.use("/api/comment", comment);
   app.use("/api/triangle", triangle);
+  app.use(error);
 };
