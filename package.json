@@ -1,15 +1,19 @@
 {
   "name": "compass",
   "version": "1.0.0",
-  "description": "",
+  "description": "Compass API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest --watchAll --coverage --verbose --runInBand --detectOpenHandles"
+    "test": "jest --verbose --runInBand --detectOpenHandles --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holajuwon/compass-api"
   },
   "keywords": [],
-  "author": "",
+  "author": "Holajuwon",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
