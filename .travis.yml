@@ -1,11 +1,12 @@
 language: node_js
 node_js:
-- 12
-before_install: 
+  - 12
+before_install:
+  - npm i -g npm
 install:
-- npm ci
+  - npm ci
 script:
-- npm test
+  - npm test triangle
 deploy:
   provider: heroku
   api_key:

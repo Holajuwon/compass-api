@@ -23,8 +23,14 @@ describe("/api/post", () => {
   });
 
   afterEach(async () => {
-    await pool.query(`DELETE FROM user_posts WHERE author=$1`, ["test_author"]);
     await server.close();
+    await pool.query(`DELETE FROM user_posts WHERE author=$1`, ["test_author"]);
+  });
+
+  afterAll(async () => {
+    await server.close();
+
+    await new Promise((resolve) => setTimeout(() => resolve(), 500));
   });
 
   describe("GET /api/post", () => {

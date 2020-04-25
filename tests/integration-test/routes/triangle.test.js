@@ -9,8 +9,13 @@ describe("/api/triangle", () => {
   beforeEach(() => {
     server = require("../../../index");
   });
-  afterEach(async () => {
-    await server.close();
+  afterEach(async() => {
+   await server.close();
+  });
+
+  afterAll(async () => {
+    await server.close()
+    await new Promise((resolve) => setTimeout(() => resolve(), 500));
   });
 
   describe("POST", () => {

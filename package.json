@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest --watchAll --coverage --verbose --runInBand --detectOpenHandles"
+    "test": "jest --verbose --runInBand --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
