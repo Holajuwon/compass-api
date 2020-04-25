@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Holajuwon/compass-api.svg?branch=develop)](https://travis-ci.org/Holajuwon/compass-api)
+
 # SETUP
 
 ## To get started with this Project
@@ -26,6 +28,26 @@ $ cd compass-api
 
 ```bash
 $ npm install
+```
+
+### Then setup the database and schema
+
+- You must have postgres cli installed
+
+```bash
+$ psql -c 'create database my_db;' -U postgres
+$ psql "dbname=my_db" -a -f init.sql
+```
+
+### Then setup the environmental variables in a .env file
+
+```env
+.env file
+DB_USER = postgres
+DB_HOST = localhost
+DB_DATABASE = my_db
+DB_PASSWORD =
+DB_PORT = 5432
 ```
 
 ### To start the local server use;
