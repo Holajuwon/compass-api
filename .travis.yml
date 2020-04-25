@@ -19,6 +19,7 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database my_db;' -U postgres
+  - psql "dbname=my_db" -a -f myfile.sql
 addons:
   postgresql: "10"
   apt:
