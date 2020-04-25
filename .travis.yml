@@ -19,7 +19,7 @@ services:
   - postgresql
 before_script:
   - psql -c 'create database my_db;' -U postgres
-  - psql "dbname=my_db" -a -f elephantsql.js
+  - psql "dbname=my_db" -a -f init.sql
 addons:
   postgresql: "10"
   apt:
