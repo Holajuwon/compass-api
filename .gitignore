@@ -2,3 +2,4 @@
 compass-ui/
 node_modules/
 coverage/
+logfile.log
