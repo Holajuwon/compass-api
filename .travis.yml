@@ -6,7 +6,7 @@ before_install:
 install:
   - npm ci
 script:
-  - npm test triangle
+  - npm test
 deploy:
   provider: heroku
   api_key:
