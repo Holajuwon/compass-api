@@ -20,12 +20,12 @@ env:
   global:
     - DB_USER = postgres
     - DB_HOST = localhost
-    - DB_DATABASE = my_db
-    - DB_PASSWORD = askew
+    - DB_DATABASE = compass
+    - DB_PASSWORD = ''
     - DB_PORT = 5432
 before_script:
-  - psql --command="CREATE USER ${DB_USER}"
-  - psql --command="CREATE DATABASE ${DB_DATABASE} WITH OWNER = ${DB_USER}"
+  - npm install
+  - psql -c 'create database compass;' -U postgres
 deploy:
   provider: heroku
   api_key:
