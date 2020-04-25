@@ -24,8 +24,8 @@ env:
     - DB_PASSWORD = askew
     - DB_PORT = 5432
 before_script:
-  - psql --command="CREATE USER ${DB_USER};"
-  - psql --command="CREATE DATABASE ${DB_DATABASE} WITH OWNER = ${DB_USER};"
+  - psql --command="CREATE USER ${DB_USER}"
+  - psql --command="CREATE DATABASE ${DB_DATABASE} WITH OWNER = ${DB_USER}"
 deploy:
   provider: heroku
   api_key:
