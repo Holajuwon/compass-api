@@ -5,7 +5,9 @@ services:
   - postgresql
 addons:
   postgresql: "10"
-cache: npm
+cache:
+  directories:
+    - node_modules
 install:
   - npm ci
 script:
