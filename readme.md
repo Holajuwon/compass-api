@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Holajuwon/compass-api.svg?branch=develop)](https://travis-ci.org/Holajuwon/compass-api)
+
 # SETUP
 
 ## To get started with this Project
