@@ -15,6 +15,7 @@ cache:
 install:
   - npm ci
 script:
+  - echo "skipping tests"
   # - npm test
 env:
   global:
