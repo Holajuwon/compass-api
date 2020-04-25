@@ -1,39 +1,16 @@
 language: node_js
 node_js:
-  - 12.15.0
-services:
-  - postgresql
-addons:
-  postgresql: "10"
-  apt:
-  packages:
-    - postgresql-10
-    - postgresql-client-10
-cache:
-  directories:
-    - node_modules
+- 12
+before_install: 
 install:
-  - npm ci
+- npm ci
 script:
-  - echo "skipping tests"
-  # - npm test
-env:
-  global:
-    - DB_USER = postgres
-    - DB_HOST = localhost
-    - DB_DATABASE = compass
-    - DB_PASSWORD = ''
-    - DB_PORT = 5432
-before_script:
-  - npm install
-  - psql -c 'create database compass;' -U postgres
+- npm test
 deploy:
   provider: heroku
   api_key:
-    secure: ZGtuYdR8wQBAM5nHsWBkfCezV740mIS8KJ/kDnoiMc6ZSkF0IJX0MeUdhD82iydGiHYylFOUZs6mxe/ZGaZYcIRzNBrPTnsmw25nV/ucVhH4RazJV+AJeiFVMsAaTPF+0++FQFSmLuY9lEgwOZzHfKXyuJZlzdmcU+mILM05Q9Tb6U3CdlnxA3kdF4S1JFX5QjvHuHxSBtszZgzq27+VxoQj/SeYWXNVQu6G4G5zMdIIq53/tF6vXTRh7XjJ39uzq1NPWZWDVRpgUiFoTZo/85E69WG6FNjazHfDIuOohb8fIIktCcn7qqUMeNCRqoK6pD+kOz2gbGW+wQlWGQ735ey1NFeFT1EyagCdq4bpf5ky/JRFaSldI0R6ilH0KxFzoCrRRx7IawoTWZyPYds7ZsbWASjjuLD8rNrPyVPqhHrtN34oCh/jQNALKLHgR2GcisLx8hXZYzCKfJ8C2J8REIwJbpiYEBVf9MtvE+BuqNNj24NUJElepuq8aA0NZ3jhFMDmncaFOiGMrbMrD/HvsOqLF3Pa01Pe2gQ6AlpWj/g8jPCawt5PCxYIIb+5Vm2F7TI8X8G5HzxZu06/XRsHTqO/VnbVpfin4VYmpSzkKkt3tDLkzPf9NxKKtvfwFWiHtBKykinwL2os91P4FNctin53NcUB9guU66xUxESZaR8=
-  cleanup: true
+    secure: N70HF9JpFsuqDPhlxiomlmj9yriZSmaEwfcGxKwL6VOAn5t4+qeXsCOQd6W0jnn/tOpd91hgDdX5cOCNNdqKWHjHXPIsgOlRDmshAFJ+6LCUa4o1hV1ay9rH8c8KwnShs3GKlNgZReoIEoClw8Z/chKcYunJeLN74Wd/csBc2DG/gpzjJR8zs1smp5uNO70G0VRmId63pe+VmQ/OwkLDlgAw9cp7AIGpDlSIfaJNjGuQCOcBoe0uRyePcsbnE3MhCw1jGglSB8MzR1gwFs0Q+ymjNyqhCYKCUX6cq71dScftbye+lz3kvYqRJulWZNqUPkkyyaTx42Aasjzhokl2qoAjKSd1f/KHyXp7dXdEY0+9Z9ugXiPIfA+saZhfWAeGkv6W/q9WRVNiJpDeGKNJtbn+4421lQx2R0yrxzhp8AUXTnIjPNG4PSv+bhyHzqhBRwU6OSW4QnPUIu2YROFdPIovHc7dxYnRw4iJRMAVFSwPS7lIRCrDGZd5+yXdWDbkUAlKXqLoIYwHitf7shThFzjRB3E4grFoi9yO/KlFMbmacDwcvkRU5AgVSBvO5h7tOLSGQzeEF7/l4zNHUMCvrKVxPGvaBwiiBMvSfrw7fIZ2Un9ypsacdH1Yxi2ND3MdxJgdX9M07mQBO75Y982MYzWmuoEGjmDvm8/4eXSeV0Q=
+  app: compassed-api
   on:
     repo: Holajuwon/compass-api
     branch: develop
-  app:
-    develop: compassed-api
