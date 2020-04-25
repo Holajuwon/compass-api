@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - 12.15.0
+services:
+  - postgresql
+addons:
+  postgresql: "10"
+cache: npm
+install:
+  - npm ci
+script:
+  - npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZGtuYdR8wQBAM5nHsWBkfCezV740mIS8KJ/kDnoiMc6ZSkF0IJX0MeUdhD82iydGiHYylFOUZs6mxe/ZGaZYcIRzNBrPTnsmw25nV/ucVhH4RazJV+AJeiFVMsAaTPF+0++FQFSmLuY9lEgwOZzHfKXyuJZlzdmcU+mILM05Q9Tb6U3CdlnxA3kdF4S1JFX5QjvHuHxSBtszZgzq27+VxoQj/SeYWXNVQu6G4G5zMdIIq53/tF6vXTRh7XjJ39uzq1NPWZWDVRpgUiFoTZo/85E69WG6FNjazHfDIuOohb8fIIktCcn7qqUMeNCRqoK6pD+kOz2gbGW+wQlWGQ735ey1NFeFT1EyagCdq4bpf5ky/JRFaSldI0R6ilH0KxFzoCrRRx7IawoTWZyPYds7ZsbWASjjuLD8rNrPyVPqhHrtN34oCh/jQNALKLHgR2GcisLx8hXZYzCKfJ8C2J8REIwJbpiYEBVf9MtvE+BuqNNj24NUJElepuq8aA0NZ3jhFMDmncaFOiGMrbMrD/HvsOqLF3Pa01Pe2gQ6AlpWj/g8jPCawt5PCxYIIb+5Vm2F7TI8X8G5HzxZu06/XRsHTqO/VnbVpfin4VYmpSzkKkt3tDLkzPf9NxKKtvfwFWiHtBKykinwL2os91P4FNctin53NcUB9guU66xUxESZaR8=
+  cleanup: true
+  on:
+    repo: Holajuwon/compass-api
+    branch: develop
+  app:
+    develop: compassed-api
