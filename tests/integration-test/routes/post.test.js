@@ -76,10 +76,10 @@ describe("/api/post", () => {
       expect(res.body[0]).toHaveProperty("post_id", id);
     });
 
-    it("should return 500 if invalid id", async () => {
+    it("should return 400 if invalid id", async () => {
       id = 1;
       const res = await exec();
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
     });
   });
 
@@ -117,15 +117,18 @@ describe("/api/post", () => {
     it("should delete post and return deleted post", async () => {
       const res = await exec();
       expect(res.status).toBe(200);
-      expect(res.body[0]).toHaveProperty("user_post", data.rows[0].user_post);
+      expect(res.body[0]).toHaveProperty(
+        "post_content",
+        data.rows[0].post_content
+      );
       expect(res.body[0]).toHaveProperty("author", data.rows[0].author);
       expect(res.body[0]).toHaveProperty("post_date", data.rows[0].post_date);
       expect(res.body[0]).toHaveProperty("post_id", id);
     });
-    it("should return 500 if invalid id", async () => {
+    it("should return 400 if invalid id", async () => {
       id = 1;
       const res = await exec();
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
     });
   });
 

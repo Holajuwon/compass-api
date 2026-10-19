@@ -1,13 +1,16 @@
-var { Pool } = require("pg");
 require("dotenv").config();
 
-const isProduction = process.env.NODE_ENV === "production";
+if (process.env.NODE_ENV === "test") {
+  module.exports = require("./tests/helpers/sqlitePool");
+} else {
+  const { Pool } = require("pg");
+  const isProduction = process.env.NODE_ENV === "production";
+  const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
 
-const connectionString = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}`;
+  const pool = new Pool({
+    connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+    ssl: isProduction,
+  });
 
-const pool = new Pool({
-  connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: isProduction,
-});
-
-module.exports = pool;
+  module.exports = pool;
+}

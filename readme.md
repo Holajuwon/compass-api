@@ -70,6 +70,8 @@ Link to [hosted](https://compassed-api.herokuapp.com/api/post) api [here](https:
 
 ### This project makes use of [Jest](https://jestjs.io/) for testing
 
+Tests use an in-memory SQLite database and do not require a local PostgreSQL server. Normal application execution continues to use PostgreSQL.
+
 To run tests
 
 ```

@@ -1,22 +1,22 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+DROP TABLE IF EXISTS user_comments CASCADE;
 DROP TABLE IF EXISTS user_posts CASCADE;
 CREATE TABLE IF NOT EXISTS user_posts
 (
-    post_content character varying(10000) COLLATE pg_catalog."default" NOT NULL,
-    author character varying(255) COLLATE pg_catalog."default" DEFAULT 'Anonymous'::character varying,
+    post_content character varying(10000) NOT NULL,
+    author character varying(255) DEFAULT 'Anonymous',
     post_id uuid NOT NULL DEFAULT uuid_generate_v1(),
-    post_date character varying(32) COLLATE pg_catalog."default" NOT NULL,
-    post_title character varying(500) COLLATE pg_catalog."default" NOT NULL DEFAULT 'A Beautiful Post'::character varying,
+    post_date character varying(32) NOT NULL,
+    post_title character varying(500) NOT NULL DEFAULT 'A Beautiful Post',
     image_url "char",
     CONSTRAINT user_posts_pkey PRIMARY KEY (post_id),
     CONSTRAINT user_posts_post_id_key UNIQUE (post_id)
 );
 
-DROP TABLE IF EXISTS user_comments CASCADE;
 CREATE TABLE IF NOT EXISTS user_comments
 (
-    user_comment character varying(10000) COLLATE pg_catalog."default" DEFAULT 'Anonymous'::character varying,
-    author character varying(255) COLLATE pg_catalog."default",
+    user_comment character varying(10000) DEFAULT 'Anonymous',
+    author character varying(255),
     comment_date timestamp with time zone NOT NULL DEFAULT now(),
     comment_id uuid NOT NULL DEFAULT uuid_generate_v1(),
     post_id uuid NOT NULL,

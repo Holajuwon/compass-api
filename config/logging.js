@@ -9,17 +9,23 @@ module.exports = () => {
     throw ex;
   });
 
-  // configure winston logger to files
-  winston.configure({
-    transports: [
+  const loggerTransports = [
+    new transports.Console({
+      handleExceptions: true,
+      format: combine(colorize(), simple()),
+    }),
+  ];
+
+  if (process.env.NODE_ENV !== "test") {
+    loggerTransports.unshift(
       new transports.File({
         handleExceptions: true,
         filename: "logfile.log",
-      }),
-      new transports.Console({
-        handleExceptions: true,
-        format: combine(colorize(), simple()),
-      }),
-    ],
+      })
+    );
+  }
+
+  winston.configure({
+    transports: loggerTransports,
   });
 };

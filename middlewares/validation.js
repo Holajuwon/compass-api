@@ -1,4 +1,8 @@
 const Joi = require("joi");
+const uuidPattern = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
+
+module.exports.isValidUuid = (value) =>
+  typeof value === "string" && uuidPattern.test(value);
 
 module.exports.validatePost = (post) => {
   const schema = {

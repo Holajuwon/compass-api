@@ -83,10 +83,10 @@ describe("/api/comment", () => {
       expect(res.status).toBe(404);
     });
 
-    it("should return 500 if invalid id", async () => {
+    it("should return 400 if invalid id", async () => {
       post_id = 1;
       const res = await exec();
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
     });
   });
 
@@ -132,10 +132,10 @@ describe("/api/comment", () => {
       expect(res.body[0]).toHaveProperty("post_id", post_id);
     });
 
-    it("should return 500 if invalid id", async () => {
+    it("should return 400 if invalid id", async () => {
       comment_id = 1;
       const res = await exec();
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
     });
   });
 
@@ -162,10 +162,10 @@ describe("/api/comment", () => {
       expect(res.body[0]).toHaveProperty("post_id", post_id);
     });
 
-    it("should return 500 if invalid id", async () => {
+    it("should return 400 if invalid id", async () => {
       comment_id = 1;
       const res = await exec();
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
     });
 
     it("should return if invalid update", async () => {
