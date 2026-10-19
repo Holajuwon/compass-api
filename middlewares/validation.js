@@ -7,7 +7,7 @@ module.exports.validatePost = (post) => {
     title: Joi.string().min(5),
     url: Joi.string().uri().optional()
   };
-  return Joi.validate(post, schema);
+  return Joi.object(schema).validate(post);
 };
 
 module.exports.validatePostUpdate = (post) => {
@@ -17,7 +17,7 @@ module.exports.validatePostUpdate = (post) => {
     title: Joi.string(),
     url: Joi.string(),
   };
-  return Joi.validate(post, schema);
+  return Joi.object(schema).validate(post);
 };
 
 module.exports.validateComment = (post) => {
@@ -25,7 +25,7 @@ module.exports.validateComment = (post) => {
     author: Joi.string().min(3).max(50),
     comment: Joi.string().min(5).required(),
   };
-  return Joi.validate(post, schema);
+  return Joi.object(schema).validate(post);
 };
 
 module.exports.validateCommentUpdate = (post) => {
@@ -33,5 +33,5 @@ module.exports.validateCommentUpdate = (post) => {
     comment: Joi.string().min(5).required(),
     author: Joi.string().max(50),
   };
-  return Joi.validate(post, schema);
+  return Joi.object(schema).validate(post);
 };
